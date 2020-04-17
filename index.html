@@ -1,45 +1,34 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>PWA</title>
-
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="white" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-        <meta name="apple-mobile-web-app-title" content="Progressive Web App" />
-        <meta
-            name="msapplication-TileImage"
-            content="images/hello-icon-144.png"
-        />
-        <meta name="msapplication-TileColor" content="#FFFFFF" />
-        <meta http-equiv=”Refresh”
-        content=”0;URL=https://users.metropolia.fi/~christhe/” />
-
-        <link rel="icon" href="./favicon.ico" type="image/x-icon" />
-        <link rel="apple-touch-icon" href="./images/hello-icon-152.png" />
-        <link rel="stylesheet" href="./fonts/stylesheet.css">
-        <link rel="stylesheet" type="text/css" href="./css/style.css" />
-        <link rel="stylesheet" href="./css/all.css">
-        <link rel="manifest" href="./manifest.json" />
-    </head>
-    <body class="fullscreen">
-        <div class="container">
-            <h1 class="title">SUNSET</h1>
-            <i class="fas fa-sun"></i>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum laoreet rutrum porttitor. Maecenas consequat eros sed fringilla venenatis. Curabitur cursus, quam id auctor mollis, odio nibh ultricies tellus, vel finibus tortor justo ut lacus. Phasellus a orci quam. Etiam non commodo neque, eget fringilla erat. Proin fringilla dictum nisl, sed condimentum leo scelerisque non. Nullam tincidunt orci quis cursus aliquam. Fusce convallis consequat mauris nec fringilla.
-            </p>
-            <p>
-                Nullam eget quam nibh. Morbi leo arcu, consequat quis feugiat sit amet, hendrerit eu justo. Nulla vehicula dui vitae risus viverra, hendrerit auctor massa porttitor. Maecenas nisi lorem, fringilla sit amet nulla vel, fermentum elementum orci. Ut porttitor tempor ornare. Phasellus nunc nulla, faucibus ac scelerisque in, finibus ut lorem. Aenean auctor scelerisque leo.
-            </p>
-            <p>
-                Donec efficitur tristique eleifend. Ut eget felis enim. Fusce a pharetra felis, eu finibus purus. Ut massa quam, maximus et urna et, sagittis pellentesque lacus. Donec a viverra ligula, sit amet cursus nulla. Sed commodo enim nec erat tincidunt pellentesque. Mauris purus lacus, eleifend eu pharetra eget, gravida eu erat. Proin dignissim urna sit amet elementum ultricies. In augue nunc, varius vel nunc id, congue aliquet ex. Nunc blandit ac eros non luctus. Vivamus rutrum ipsum ex, vel placerat mi volutpat in. Vivamus sed pharetra libero. Vestibulum eget nisl in dui efficitur venenatis. Suspendisse tincidunt lobortis volutpat. Sed tincidunt porttitor eros, vitae iaculis neque porttitor non.
-            </p>
-        </div>
-
-        <script src="./js/main.js"></script>
-    </body>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Hello World</title>
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="white"/>
+  <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+  <link rel="apple-touch-icon" href="images/hello-icon-152.png">
+  <meta name="theme-color" content="white"/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Hello World">
+  <meta name="msapplication-TileImage" content="images/hello-icon-144.png">
+  <meta name="msapplication-TileColor" content="#FFFFFF">
+<body class="fullscreen">
+<div class="container">
+  <h1 class="title">Hello World!</h1>
+  <form>
+    <input type="text" name="greeting" placeholder="type greeting">
+    <button type="submit">Send</button>
+  </form>
+  <div class="greetings">
+    <button id="refresh">Refresh</button>
+    <ul></ul>
+  </div>
+</div>
+<script src="js/fetchGQL.js"></script>
+<script src="js/idb.js"></script>
+<script src="js/main.js"></script>
+</body>
 </html>

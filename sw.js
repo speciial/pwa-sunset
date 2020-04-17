@@ -1,42 +1,43 @@
-const cacheName = "pwaCache";
-const fileCache = [
+"use strict";
+self.importScripts("./js/fetchGQL.js");
+self.importScripts("./js/idb.js");
+const cacheName = "hello-pwa";
+const filesToCache = [
     "./",
     "./index.html",
     "./favicon.ico",
-    "./js/main.js",
     "./css/style.css",
-    "./images/hello-icon-128.png",
-    "./images/hello-icon-144.png",
-    "./images/hello-icon-152.png",
-    "./images/hello-icon-192.png",
-    "./images/hello-icon-256.png",
-    "./images/hello-icon-512.png",
-    "./images/picture.jpg",
-    "./fonts/",
-    "./webfonts/"
+    "./js/main.js",
+    "./js/idb.js",
+    "./images/pwa.png",
 ];
 
-self.addEventListener("install", (event) => {
-    event.waitUntil(
+/* Start the service worker and cache all of the app's content */
+self.addEventListener("install", (e) => {
+    e.waitUntil(
         (async () => {
             try {
                 const cache = await caches.open(cacheName);
-                cache.addAll(fileCache);
-            } catch (error) {
-                console.log(error);
+                // console.log(cache);
+                return cache.addAll(filesToCache);
+            } catch (e) {
+                console.log("after install", e.message);
             }
         })()
     );
 });
 
-self.addEventListener("fetch", (event) => {
-    event.respondWith(
+/* Serve cached content when offline */
+self.addEventListener("fetch", (e) => {
+    // console.log(e.request);
+    e.respondWith(
         (async () => {
             try {
-                const response = await caches.match(event.request);
-                return response || fetch(event.request);
-            } catch (error) {
-                console.log(error);
+                const response = await caches.match(e.request);
+                // console.log('resp', response);
+                return response || fetch(e.request);
+            } catch (e) {
+                console.log("load cache", e.message);
             }
         })()
     );
