@@ -1,24 +1,42 @@
 "use strict";
-window.onload = async () => {
-    if ("serviceWorker" in navigator) {
-        try {
-            const worker = await navigator.serviceWorker.register("./sw.js");
-            console.log("Service Worker Registered", worker);
-        } catch (error) {
-            console.log(error);
-        }
-    }
-};
 
 window.addEventListener("load", async () => {
     const ul = document.querySelector("ul");
     const rfrsh = document.querySelector("#refresh");
     const form = document.querySelector("form");
-    const username = "changeThis";
+    const username = "christianH";
     const greeting = form.elements.greeting;
     console.log("hello");
 
+    if ("serviceWorker" in navigator) {
+        try {
+            const worker = await navigator.serviceWorker.register("./sw.js");
+            console.log("ServiceWorker registered", worker);
+            const registration = await navigator.serviceWorker.ready;
+            if("sync" in registration) {
+                form.addEventListener("submit", async (event) => {
+                    event.preventDefault();
+                    console.log("submitting data");
+                    const message = {
+                        username,
+                        greeting: greeting.value,
+                    };
+
+                    try {
+                        saveData("outbox", message);    
+                        await registration.sync.register("send-message");
+                    } catch (error) {
+                        console.log(error);
+                    }
+                });
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     const init = async () => {
+        // TODO: store the messages in the inbox, so that you can see old messages even if you are offline 
         const data = [];
         try {
             const greetings = await getGreetingsByUser(username);
@@ -31,7 +49,7 @@ window.addEventListener("load", async () => {
 
         ul.innerHTML = "";
         data.forEach((item) => {
-            ul.innerHTML += `<ul>${item.username}: ${item.greeting}</ul>`;
+            ul.innerHTML += `<li>${item.username}: ${item.greeting}</li>`;
         });
     };
 
