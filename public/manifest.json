@@ -1,0 +1,16 @@
+{
+    "name": "Hello World",
+    "short_name": "Hello",
+    "icons": [
+        {
+            "src": "img/icon.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "lang": "en-US",
+    "start_url": "/~christhe/chargemap/index.html",
+    "display": "standalone",
+    "background_color": "white",
+    "theme_color": "white"
+}
